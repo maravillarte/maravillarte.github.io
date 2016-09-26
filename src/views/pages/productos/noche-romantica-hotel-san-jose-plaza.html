@@ -1,0 +1,50 @@
+---
+title: Noche Romántica Hotel San José Plaza
+
+###################
+#Products
+###################
+products:
+ title: Noche Romántica Hotel San José Plaza
+ img: /img/screens/romantico1.jpg
+ price: 230000
+ features:
+ - Habitacion Standar superior cama	king size
+ - decoración de petalos naturales
+ - lencería de 360 hilos
+ - vino espumoso
+ - flores
+ - Desayuno servido en la habitación
+ reservar: true
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	{{>style}}
+</head> 	
+<body class="blue-grey lighten-5">
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	<br>
+	
+	{{>general/product-details  info=front.products}}
+	
+
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

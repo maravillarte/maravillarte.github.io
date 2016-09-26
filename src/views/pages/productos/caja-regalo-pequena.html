@@ -1,0 +1,47 @@
+---
+title: Cajita regalo peqieña
+
+###################
+#Products
+###################
+products:
+ title: Cajita regalo peqieña
+ img: /img/screens/rosas.png
+ price: 30000
+ extra: "Ramo de rosas de colores surtidos, elige el que mas te guste: <br>Rosas Rojas<br>Rosas"
+ features:
+ - Ramo de 12 rosas
+ - Las rosas pueden ser surtidas entre rojo,amarillo,blanco y rosa
+ - Incluye costo de envio
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	{{>style}}
+</head> 	
+<body class="blue-grey lighten-5">
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	<br>
+	
+	{{>general/product-details  info=front.products}}
+	
+
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

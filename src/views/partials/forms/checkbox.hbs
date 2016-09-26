@@ -1,0 +1,24 @@
+{{!checkbox:
+info:
+ name:
+ items:
+  - label:
+    checked:
+    disabled:
+    label:
+    value:
+}}
+{{#each info.items}}
+<p>
+
+	<input 
+	name="{{../info.name}}"  
+	type="checkbox" 
+	id="{{this.value}}"  
+	{{#if this.checked}}checked="checked"{{/if}}
+	{{#if this.checked}}checked="disabled"{{/if}}
+	{{#if this.value}} value="{{this.value}}"  {{else}} value="{{this.label}}" {{/if}}
+	/>
+	<label for="{{this.value}}">{{this.label}}</label>
+</p>
+{{/each}}

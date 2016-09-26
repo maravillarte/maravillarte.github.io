@@ -1,0 +1,44 @@
+---
+title: Collar barco de origami en globo
+
+###################
+#Products
+###################
+products:
+ title: Collar barco de origami en globo
+ img: /img/screens/boat.png
+ price: 35000
+ features:
+ - Collar largo vintage (70 cm) de globo (2.5 cm) con barco de papel en cobre y vidrio
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	{{>style}}
+</head> 	
+<body class="blue-grey lighten-5">
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	<br>
+	
+	{{>general/product-details  info=front.products}}
+	
+
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

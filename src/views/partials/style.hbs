@@ -1,0 +1,223 @@
+<link href="https://fonts.googleapis.com/css?family=Neuton:200,400" rel="stylesheet">
+
+<link href="/css/min.css" type="text/css" rel="stylesheet" media="screen" />
+{{!<link href="css/print.css" type="text/css" rel="stylesheet" media="print" />}}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+
+<style>
+{{#unless front.theme}}
+.primary{
+	background-color: {{data.primary}} !important;
+}
+.primary.lighten{
+	background-color: {{data.primary-light}} !important;
+}
+.primary.darken{
+	background-color: {{data.primary-dark}} !important;
+}
+.primary-text{
+	color: {{data.primary-text}} !important;
+}
+.accent{
+	background-color: {{data.accent}} !important;
+} 
+.accent-dark{
+	background-color: {{data.accent-dark}} !important;
+}
+.accent-light{
+	background-color: {{data.accent-light}} !important;
+} 
+.accent-text{
+	color: {{data.accent-text}} !important;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating){
+  color: {{data.accent}};
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
+    color: {{data.accent-dark}};
+}
+.waves-effect.waves-accent .waves-ripple {
+      background-color: {{data.accent}};
+    }
+[type=checkbox]:checked+label:before{
+	border-right: 2px solid {{data.accent-dark}};
+    border-bottom: 2px solid {{data.accent-dark}};
+}
+input[type=text]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label, 
+input[type=email]:focus:not([readonly]) + label, 
+input[type=url]:focus:not([readonly]) + label, 
+input[type=time]:focus:not([readonly]) + label, 
+input[type=date]:focus:not([readonly]) + label, 
+input[type=datetime-local]:focus:not([readonly]) + label, 
+input[type=tel]:focus:not([readonly]) + label, 
+input[type=number]:focus:not([readonly]) + label, 
+input[type=search]:focus:not([readonly]) + label, 
+textarea.materialize-textarea:focus:not([readonly]) + label{
+	color: {{data.accent-dark}};
+}
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]),
+textarea:focus {
+    border-bottom: 1px solid {{data.accent-dark}};
+    box-shadow: 0 1px 0 0 {{data.accent-dark}};
+}
+/*estatus Colors*/
+.done{
+	background-color: #00c853  !important;
+}
+.done-text{
+	background-color: #2c3e50 !important;
+	color: #e8f5e9 !important;
+}
+.error{
+	background-color: #d50000  !important;
+}
+
+.error-text{
+	background-color: #ffebee  !important;
+	color: #d50000  !important;
+}
+.sync{
+	background-color: #ffab00   !important;
+}
+footer{
+	background-color: {{data.footer-color}}   !important;
+}
+
+nav{
+	background-color: {{data.nav-color}}   !important;
+}
+a.btn.active::after{
+  border-right:23px solid {{data.accent}};   
+}
+a.btn:hover{
+	background-color: {{data.accent-dark}} !important;
+	color: white !important;
+	}
+.parallax{
+  background-color: {{data.accent-dark}} ;
+}
+{{else}}
+.primary{
+	background-color: {{front.primary}} !important;
+}
+.primary.lighten{
+	background-color: {{front.primary-light}} !important;
+}
+.primary.darken{
+	background-color: {{front.primary-dark}} !important;
+}
+.primary-text{
+	color: {{front.primary-text}} !important;
+}
+.accent{
+	background-color: {{front.accent}} !important;
+} 
+.accent-dark{
+	background-color: {{front.accent-dark}} !important;
+}
+.accent-light{
+	background-color: {{front.accent-light}} !important;
+} 
+.accent-text{
+	color: {{front.accent-text}} !important;
+}
+.waves-effect.waves-accent .waves-ripple {
+      background-color: {{front.accent}};
+    }
+input[type=text]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label, 
+input[type=email]:focus:not([readonly]) + label, 
+input[type=url]:focus:not([readonly]) + label, 
+input[type=time]:focus:not([readonly]) + label, 
+input[type=date]:focus:not([readonly]) + label, 
+input[type=datetime-local]:focus:not([readonly]) + label, 
+input[type=tel]:focus:not([readonly]) + label, 
+input[type=number]:focus:not([readonly]) + label, 
+input[type=search]:focus:not([readonly]) + label, 
+textarea.materialize-textarea:focus:not([readonly]) + label{
+	color: {{front.accent-dark}};
+}
+[type=checkbox]:checked+label:before{
+	border-right: 2px solid {{front.accent-dark}};
+    border-bottom: 2px solid {{front.accent-dark}};
+}
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]),
+textarea:focus {
+    border-bottom: 1px solid {{front.accent-dark}};
+    box-shadow: 0 1px 0 0 {{front.accent-dark}};
+}
+/*estatus Colors*/
+.done{
+	background-color: #00c853  !important;
+}
+.done-text{
+	background-color: #2c3e50 !important;
+	color: #e8f5e9 !important;
+}
+.error{
+	background-color: #d50000  !important;
+}
+
+.error-text{
+	background-color: #ffebee  !important;
+	color: #d50000  !important;
+}
+.sync{
+	background-color: #ffab00   !important;
+}
+footer{
+	background-color: {{front.footer-color}}   !important;
+}
+
+nav{
+	background-color: {{front.nav-color}}   !important;
+}
+a.btn.active::after{
+  border-right:23px solid {{front.accent}};   
+}
+a.btn:hover{
+	background-color: {{front.accent-dark}} !important;
+	color: white !important;
+	}
+.parallax{
+  background-color: {{front.accent-dark}} ;
+}
+{{/unless}}
+#no-parallax{
+	background: url({{front.parallax}}-mini.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#quote-mobile{
+	background: url({{front.quote-img}}-mini.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>

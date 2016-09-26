@@ -1,0 +1,45 @@
+---
+title: Varitas personalizadas, Harry potter
+
+###################
+#Products
+###################
+products:
+ title: Varitas personalizadas, Harry potter
+ img: /img/screens/bara2.jpg
+ price: 30000
+ features:
+ - Varitas mágicas de cualquiera de los personajes de la saga o la que tú quieras
+ - '<a target="_blank" href="http://harrypotter.wikia.com/wiki/Wand#gallery-0">La lista de baritas puede verse aquí</a>'
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	{{>style}}
+</head> 	
+<body class="blue-grey lighten-5">
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	<br>
+	
+	{{>general/product-details  info=front.products}}
+	
+
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

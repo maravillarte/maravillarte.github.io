@@ -1,0 +1,46 @@
+{{!--
+estructura: un array de datos con:
+products:
+ - title: Nombre Producto1
+   description: Descripcion Producto
+   action: url, producto
+   img: imagen del droducto
+   price: precio del producto
+   tags:
+       -"etiqueta1"
+       -"etiqueta2"
+ - title: Chocolates X
+   description: Regala Experiencias
+   action: /regalar-experiencias.html
+   img: /img/type/dinner.jpg
+
+--}}
+
+<div class="row no-mar">
+	{{#each this.info}}
+	<div class="col s12 l4 m6 product">
+		<a href="{{this.action}}">
+			<div  class="card product-card">
+				<div class="card-image">
+					<img  src="{{this.img}}">
+					{{!--<span class="card-title dark">{{this.title}}</span>--}}
+				</div>
+				<div class="card-content black-text">
+					<h2 class="no-mar truncate">{{this.title}}</h2>
+
+				</div>
+				
+				<div class="card-action">
+					<p class="right-align no-mar accent-text" style="display:inline;">$ {{addCommas this.price}}  </p>
+					{{#each this.tags}}
+					<div class="chip no-mar">
+				    	{{this}}
+					</div>
+					{{/each}}
+					
+				</div>
+			</div>
+		</a>
+	</div>
+	{{/each}}
+</div>

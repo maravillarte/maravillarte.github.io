@@ -1,0 +1,22 @@
+<div class="input-field col s12 {{class}}">	
+	<input 
+	{{!name}}
+	name="{{name}}"  
+	{{!id optional}}
+	{{#if id}}id="{{id}}" {{else}}id="{{name}}" {{/if}}
+	{{!placeholder}}
+	{{#if placeholder}} placeholder="{{placeholder}}" {{/if}}
+	{{#if ph}} placeholder="{{ph}}" {{/if}}
+	{{!required}}
+	{{#if required}}required{{/if}}
+	{{#if r}}required{{/if}}
+	{{!autocomplete}}
+	{{#if autocomplete}} autocomplete="{{autocomplete}}" {{/if}}
+	{{#if ac}} autocomplete="{{ac}}" {{/if}}
+	{{!other}}
+	type="text" 
+	class="validate" 
+	
+	>
+	<label for="{{name}}">{{label}}</label>
+</div>

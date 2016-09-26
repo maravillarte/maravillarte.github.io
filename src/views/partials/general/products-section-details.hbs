@@ -1,0 +1,331 @@
+{{!--
+estructura: un array de datos con:
+products:
+ - title: Nombre Producto1
+   description: Descripcion Producto
+   action: url, producto
+   img: imagen del droducto
+   price: precio del producto
+   tags:
+       -"etiqueta1"
+       -"etiqueta2"
+ - title: Chocolates X
+   description: Regala Experiencias
+   action: /regalar-experiencias.html
+   img: /img/type/dinner.jpg
+   --}}
+   {{#each this.info}}
+   {{!el producto}}
+   <div class="col s12 l4 m6 product">
+     <a 
+     href="#modal-{{../id}}-{{@index}}" 
+     class="modal-trigger a-card-product" 
+     data-categories="{{this.categories.[0]}}"
+     data-price="{{this.price}}"
+     data-title="{{this.title}}"
+     data-image="{{this.img}}"
+     data-creative="{{../id}}"
+     data-time="{{this.time}}"
+     >
+     <div  class="card product-card">
+       <div class="card-image">
+         <img  src="{{this.img}}">
+       </div>
+       <div class="card-content black-text">
+         <p class="no-mar truncate">{{this.title}}</p>
+
+       </div>
+
+       <div class="card-action">
+         <p class="right-align no-mar accent-text" style="display:inline;">$ {{addCommas this.price}}  </p>
+         {{#each this.tags}}
+         <div class="chip no-mar">
+           {{this}}
+         </div>
+         {{/each}}
+
+       </div>
+     </div>
+   </a>
+ </div>
+ {{/each}}
+   {{#each this.info}}
+   {{#each this.variation}}
+   {{!el producto}}
+   <div class="col s12 l4 m6 product">
+     <a 
+     href="#modal-{{../../id}}-{{@../index}}-{{@index}}" 
+     class="modal-trigger a-card-product" 
+     data-categories="{{../this.categories.[0]}}"
+     data-price="{{../this.price}}"
+     data-title="{{../this.title}}"
+     data-image="{{this}}"
+     data-creative="{{../id}}"
+     data-time="{{../this.time}}"
+     >
+     <div  class="card product-card">
+       <div class="card-image">
+         <img  src="{{this}}">
+       </div>
+       <div class="card-content black-text">
+         <p class="no-mar truncate">{{../this.title}}</p>
+
+       </div>  
+
+       <div class="card-action">
+         <p class="right-align no-mar accent-text" style="display:inline;">$ {{addCommas ../this.price}}  </p>
+         {{#each ../this.tags}} 
+         <div class="chip no-mar">
+           {{this}}
+         </div> 
+         {{/each}}
+
+       </div>
+     </div>
+   </a>
+ </div>
+ {{/each}}
+ {{/each}}
+ {{#each this.info}}
+ {{!el modal de compra}}
+ <div id="modal-{{../id}}-{{@index}}" class="modal modal-fixed-footer modal-comprar">
+   <div class="container container-90">
+     <div class="row">
+       <h1 class="accent-text product-name">{{this.title}}</h1>
+     </div>
+     <div class="row">
+       {{!IMAGEN DEL PRODUCTO}}
+       <div class="col s12 l6 m6">
+         <img src="{{this.img}}" alt="imagen de {{this.title}}" class="responsive-img materialboxed">
+         {{!galleria DEL PRODUCTO}}
+
+         <br> 
+        {{! <h2 class="accent-text">Galeria</h2>}}
+         <div class="row">
+          {{#each  this.variation}}
+          <div class="col s2 l2 l2 thumbnail-mini" >
+           <img src="{{this}}" alt="" class="responsive-img materialboxed" s>
+         </div>
+         {{/each}}
+         {{#each  this.gallery}}
+          <div class="col s2 l2 l2 thumbnail-mini" >
+           <img src="{{this}}" alt="" class="responsive-img materialboxed" s>
+         </div>
+         {{/each}}
+
+       </div>
+     </div>
+     {{!DATOS DEL PRODUCTO}}
+     <div class="col s12 l6 m6">
+       <p class="price">$ {{addCommas this.price}}</p>
+       <p class="no-mar">{{this.incluye}}</p>
+       <br>
+       <a 
+       class=" waves-effect waves-light btn-large accent"
+       data-categories="{{this.categories.[0]}}"
+       onclick="
+       ga( 'send', 'event','casi-comprar','compras','{{this.title}}');buyClick({{this.price}},'{{this.title}}','{{this.img}}','{{this.time}}','{{../id}}')"
+       >
+       Añadir 
+       <i class="material-icons right">add_shopping_cart</i></a>
+       <br><br>
+       {{#if this.description}}
+       <h2 class="accent-text">Descripción</h2>
+       <p>{{this.description}}</p>
+       {{/if}}
+
+       {{#if this.time}}
+       <h2 class="accent-text">Tiempo de fabricación</h2>
+       <p>{{this.time}} Días</p>
+       {{/if}}
+
+
+
+     </div>
+     {{!boton de salir}}
+     <div class="fixed-action-btn" style="top: 10px; right: 10px;">
+       <a class="btn-floating btn-large accent" onclick="$('#modal-{{../id}}-{{@index}}').closeModal();">
+        <i class="large material-icons">cancel</i>
+      </a>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <br>
+  <div class="row">
+    {{#if this.features}}
+    <h2 class="accent-text">Características</h2>
+    <ul>
+     {{#each this.features}}
+     <li>{{{this}}}</li>
+     {{/each}}
+   </ul>
+   {{/if}}
+
+
+
+
+   {{!--#if this.variation}}
+   <h2 class="accent-text">Galeria</h2>
+   <div class="row">
+    {{#each  this.variation}}
+    <div class="thumbnail col s6 l3 l3">
+     <img src="{{this}}" alt="" class=" materialboxed">
+   </div>
+   {{/each}}
+
+ </div>
+ {{/if--}}
+</div>
+
+</div>
+</div>
+{{/each}}
+
+
+{{#each this.info}}
+{{#each this.variation}}
+ {{!el modal de compra}}
+ <div id="modal-{{../../id}}-{{@../index}}-{{@index}}" class="modal modal-fixed-footer modal-comprar">
+   <div class="container container-90">
+     <div class="row">
+       <h1 class="accent-text product-name">{{../this.title}}</h1>
+     </div>
+     <div class="row">
+       {{!IMAGEN DEL PRODUCTO}}
+       <div class="col s12 l6 m6">
+         <img src="{{this}}" alt="imagen de {{../this.title}}" class="responsive-img materialboxed">
+         {{!galleria DEL PRODUCTO}}
+
+         <br>
+        {{! <h2 class="accent-text">Galeria</h2>}}
+         <div class="row">
+          {{#each  ../this.variation}}
+          <div class="col s2 l2 l2 thumbnail-mini" >
+           <img src="{{this}}" alt="" class="responsive-img materialboxed" s>
+         </div>
+         {{/each}}
+         {{#each  this.gallery}}
+          <div class="col s2 l2 l2 thumbnail-mini" >
+           <img src="{{this}}" alt="" class="responsive-img materialboxed" s>
+         </div>
+         {{/each}}
+
+       </div>
+     </div>
+     {{!DATOS DEL PRODUCTO}}
+     <div class="col s12 l6 m6">
+       <p class="price">$ {{addCommas ../this.price}}</p>
+       <p class="no-mar">{{../this.incluye}}</p>
+       <br>
+       <a 
+       class=" waves-effect waves-light btn-large accent"
+       data-categories="{{../this.categories.[0]}}"
+       onclick="
+       ga( 'send', 'event','casi-comprar','compras','{{../this.title}}');buyClick({{../this.price}},'{{../this.title}}','{{this}}','{{../this.time}}','{{../../id}}')"
+       >
+       Añadir 
+       <i class="material-icons right">add_shopping_cart</i></a>
+       <br><br>
+       {{#if ../this.description}}
+       <h2 class="accent-text">Descripción</h2>
+       <p>{{../this.description}}</p>
+       {{/if}}
+
+       {{#if ../this.time}}
+       <h2 class="accent-text">Tiempo de fabricación</h2>
+       <p>{{../this.time}} Días</p>
+       {{/if}}
+
+
+
+     </div>
+     {{!boton de salir}}
+     <div class="fixed-action-btn" style="top: 10px; right: 10px;">
+       <a class="btn-floating btn-large accent" onclick="$('#modal-{{../../id}}-{{@../index}}-{{@index}}').closeModal();">
+        <i class="large material-icons">cancel</i>
+      </a>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <br>
+  <div class="row">
+    {{#if ../this.features}}
+    <h2 class="accent-text">Características</h2>
+    <ul>
+     {{#each ../this.features}}
+     <li>{{{this}}}</li>
+     {{/each}}
+   </ul>
+   {{/if}}
+</div>
+
+</div>
+</div>
+{{/each}}
+{{/each}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!MODAL DE CONFIRMAR COMPRA}}
+{{#each this.info}}
+{{!--<div id="modal-comprar" class="modal modal-fixed-footer modal-comprar-2">
+  <div class="container container-90">
+    <br>
+    <h1>Confirmar compra {{this.title}}</h1>
+    <br>
+    <p>Estamos encantados en poder servirte, si tienes alguna duda, no dudes en escribirnos al WhatsApp 300 355 6475, el pago se realiza en contraentrega.</p>
+    <br>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSc6rT7VhxrRAejwtdlm6rv_hWWnQ5-1kPZ_LdvUZKrzbGNctw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+      <div class="row">
+        {{!direccion 1}}
+        <div  class="input-field col s12">
+          <input name="entry.1386171733" type="text" class="validate">
+          <label for="first_name">Dirección de entrega</label>
+        </div>
+        {{!destinatario 2}}
+        <div class="input-field col s12 l6">
+          <input name="entry.318204112" type="text" class="validate">
+          <label for="first_name">A nombre de</label>
+        </div>
+        {{!celular 2}}
+        <div class="input-field col s12 l6">
+          <input  name="entry.2018040469" type="text" class="validate">
+          <label for="first_name">Número de celular</label>
+        </div>
+        {{!descripcion 2}}
+        <div class="input-field col s12">
+          <textarea placeholder="Escribe aquí, si deseas alguna característica especial en tu pedido"  name="entry.1828123166" id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">Detalles del pedido</label>
+        </div>
+        <div class="input-field col s12 l6">
+          <input class="hide"  name="entry.373077336" type="text" value="{{info.title}}">
+          <label class="hide" for="first_name">Numero de celular</label>
+        </div>
+        <div class="input-field col s12 l6">
+          <input class="hide"  name="entry.643377432" type="text" value="{{info.price}}">
+          <label class="hide" for="first_name">Numero de celular</label>
+        </div>
+      </div>	
+      <div class="row center">
+
+       <input onclick="ga( 'send', 'event','comprar','confirmando','{{this.title}}')" type="submit" name="submit" value="Enviar"class="btn-large accent">
+     </div>
+   </form>
+ </div>
+</div>--}}
+{{/each}}

@@ -1,0 +1,156 @@
+{{!--
+products:
+ title: Ramo de flores pequeño
+ description: some description
+ action: pedir ya!
+ img: /img/screens/rosas.png
+ price: 30000
+ extra: "Ramo de rosas de colores surtidos, elige el que mas te guste: <br>Rosas Rojas<br>Rosas"
+ features:
+ - Ramo de 12 rosas
+ - Las rosas pueden ser surtidas entre rojo,amarillo,blanco y rosa
+ - Incluye costo de envio
+ gallery:
+ - /img/screens/rosas.png
+ - /img/screens/rosas.png
+ - /img/screens/rosas.png
+
+--}}
+<div class="container white z-depth-1" id="product-container">
+<div class="row no-mar"><h1>{{info.title}}</h1></div>
+<div class="row">
+	{{!IMAGEN DEL PRODUCTO}}
+	<div class="col s12 l6 m6">
+		<img src="{{info.img}}" alt="imagen de {{info.title}}" class="responsive-img materialboxed">
+	</div>
+	{{!DATOS DEL PRODUCTO}}
+	<div class="col s12 l6 m6">
+		<p class="price">$ {{addCommas info.price}}</p>
+		<p class="no-mar">{{info.incluye}}</p>
+		<br>
+		{{#if info.reservar}}
+		<a onclick="ga( 'send', 'event','casi-comprar','reservas','{{info.title}}')" class="modal-trigger waves-effect waves-light btn-large accent"  href="#modal-comprar">Reservar<i class="material-icons right">add_shopping_cart</i></a>
+		{{else}}
+		<a class="modal-trigger waves-effect waves-light btn-large accent"  href="#modal-comprar" onclick="ga( 'send', 'event','casi-comprar','compras','{{info.title}}')">Comprar<i class="material-icons right">add_shopping_cart</i></a>
+		{{/if}}
+		
+		{{#if info.features}}
+			<h2 class="accent-text">Características</h2>
+		<ul>
+		{{#each info.features}}
+			<li>{{{this}}}</li>
+		{{/each}}
+		</ul>
+		{{/if}}
+		
+		
+	</div>
+	
+</div>
+<div class="divider"></div>
+<div class="row">
+	{{!informacion extra}}
+	{{#if info.gallery}}
+	{{>general/gallery gallery=info.gallery}}
+	{{/if}}
+</div>
+</div>
+{{!modal de compra}}
+<div id="modal-comprar" class="modal modal-fixed-footer">
+	<div class="modal-content">
+
+
+		{{#if info.reservar}}
+		<h1 class="accent-text">Reservar {{info.title}}</h1>
+		<p>Muchas gracias por reservar, la confirmación la realizaremos por teléfono </p>
+		<form action="https://docs.google.com/forms/d/e/1FAIpQLSc6rT7VhxrRAejwtdlm6rv_hWWnQ5-1kPZ_LdvUZKrzbGNctw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+			<div class="row">
+				{{!direccion 1}}
+				<div  class="input-field col s12">
+					<input name="entry.1386171733" type="text" class="validate">
+					<label for="first_name">A nombre de</label>
+				</div>
+				{{!destinatario 2}}
+				<div class="input-field col s12 l6">
+					<input name="entry.318204112" type="text" class="validate">
+					<label for="first_name">Fecha</label>
+				</div>
+				{{!celular 2}}
+				<div class="input-field col s12 l6">
+					<input  name="entry.2018040469" type="text" class="validate">
+					<label for="first_name">Número de celular</label>
+				</div>
+				{{!descripcion 2}}
+				<div class="input-field col s12">
+          			<textarea  name="entry.1828123166" id="textarea1" class="materialize-textarea"></textarea>
+          			<label for="textarea1">Detalles del pedido</label>
+        		</div>
+        		<div class="input-field col s12 l6">
+					<input class="hide"  name="entry.373077336" type="text" value="{{info.title}}">
+					<label class="hide" for="first_name"></label>
+				</div>
+        		<div class="input-field col s12 l6">
+					<input class="hide"  name="entry.643377432" type="text" value="{{info.price}}">
+					<label class="hide" for="first_name"></label>
+				</div>
+        			
+			</div>	
+			<div class="row center">
+				<input onclick="ga( 'send', 'event','comprar','reservas','{{info.title}}')" type="submit" name="submit" value="Enviar"class="btn-large accent">
+			</div>
+		</form>
+		{{else}}
+		<h1 class="accent-text">Comprar {{info.title}}</h1>
+		<p>Muchas gracias por adquirir nuestros productos, el pago se realizará contraentrega</p>
+		<form action="https://docs.google.com/forms/d/e/1FAIpQLSc6rT7VhxrRAejwtdlm6rv_hWWnQ5-1kPZ_LdvUZKrzbGNctw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+			<div class="row">
+				{{!direccion 1}}
+				<div  class="input-field col s12">
+					<input name="entry.1386171733" type="text" class="validate">
+					<label for="first_name">Dirección de entrega</label>
+				</div>
+				{{!destinatario 2}}
+				<div class="input-field col s12 l6">
+					<input name="entry.318204112" type="text" class="validate">
+					<label for="first_name">A nombre de</label>
+				</div>
+				{{!celular 2}}
+				<div class="input-field col s12 l6">
+					<input  name="entry.2018040469" type="text" class="validate">
+					<label for="first_name">Número de celular</label>
+				</div>
+				{{!descripcion 2}}
+				<div class="input-field col s12">
+          			<textarea  name="entry.1828123166" id="textarea1" class="materialize-textarea"></textarea>
+          			<label for="textarea1">Detalles del pedido</label>
+        		</div>
+        		<div class="input-field col s12 l6">
+					<input class="hide"  name="entry.373077336" type="text" value="{{info.title}}">
+					<label class="hide" for="first_name">Numero de celular</label>
+				</div>
+        		<div class="input-field col s12 l6">
+					<input class="hide"  name="entry.643377432" type="text" value="{{info.price}}">
+					<label class="hide" for="first_name">Numero de celular</label>
+				</div>
+        			
+			</div>	
+			<div class="row center">
+				<input onclick="ga( 'send', 'event','comprar','reservas','{{info.title}}')" type="submit" name="submit" value="Enviar"class="btn-large accent">
+			</div>
+		</form>
+		{{/if}}
+		
+
+	</div>
+</div>
+<script type="text/javascript">var submitted=false;</script>
+<iframe name="hidden_iframe" id="hidden_iframe"
+style="display:none;" onload="if(submitted)
+{window.location='/gracias.html';}"></iframe>
+
+<script>
+	$(document).ready(function(){
+		$('.materialboxed').materialbox();
+		$('.modal-trigger').leanModal();
+	});
+</script>

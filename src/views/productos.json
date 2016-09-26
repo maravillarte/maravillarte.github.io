@@ -1,0 +1,7 @@
+{ "products" :[{
+	"title" : "name of the product",
+	"price" : "price of the product",
+	"features" : ["feature of the product","feature of the product2"],
+	"img" : "url"
+}]
+}

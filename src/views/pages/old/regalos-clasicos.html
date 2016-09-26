@@ -1,0 +1,108 @@
+---
+title: Regalos Clásicos
+################### 
+#Navigation section
+###################
+
+###################
+#Products
+###################
+products:
+ - title: Ramillete de flores
+   action: /productos/ramillete-de-flores.html
+   img: /img/products/ramillete.png
+   price: 35000
+   tags:
+    - "Envío Incluido"
+ - title: Ramo de flores en forma de corazón
+   action: /productos/ramo-de-flores.html
+   img: /img/products/ramo.png
+   price: 80000
+   tags:
+    - "Envío Incluido" 
+ - title: Osos De Peluche Gigantes de 140cm ##########peluches
+   action: /productos/oso-de-peluche-gigante.html
+   img: /img/products/osos1.png
+   price: 230000
+   tags:
+    - "Envio Incluído"
+ - title: Peluches de zootopia
+   action: /productos/peluches-zootopia.html
+   img: /img/products/peluche1.png
+   price: 80000
+# - title: Cajita de regalo pequeña ##########Cajitas
+#   action: /productos/caja-regalo-pequena.html
+#   img: /img/products/cajita1.png
+#   price: 25000
+#   tags:
+# - title: Cajita de regalo Grande 
+#   action: /productos/caja-regalo-grande.html
+#   img: /img/products/cajita2.png
+#   price: 70000
+#   tags:
+###################
+#Personalizado
+###################
+experiencias1:
+    title: Te ayudamos a encontrar el regalo perfecto
+    description: "Te podemos ayudar a encontrar el regalo perfecto para aquella persona, sin costo adicional. ¿te interesa? solo has click en 'ver más' "
+    img: /img/type/perfect.jpg
+    action: "regalos-unicos.html"
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	<!-- CSS  -->
+	{{>style}}
+	<style>	
+		.input-field label.active {
+
+		    -webkit-transform: translateY(-160%);
+		    transform: translateY(-160%);
+		}
+		.parallax-container {
+      height: 400px;
+    }
+	</style> 
+</head> 	
+<body>
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+
+	
+	<div class="blue-grey lighten-5">
+
+	<br>
+	<br>
+	<div class="container ">
+		<h1>{{front.title}}</h1>
+		{{>general/products-section  info=front.products}}
+	</div>
+	<br>
+	<div class="container">
+	<h1>¿No encuentras el regalo que buscas?</h1>
+		{{>general/horizontal-banner info=front.experiencias1}}
+	</div>
+	<br>
+	</div>
+
+	{{>footer}}
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

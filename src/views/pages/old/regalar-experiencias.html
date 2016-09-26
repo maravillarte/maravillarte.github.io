@@ -1,0 +1,94 @@
+---
+title: Regala experiencias
+################### 
+#Navigation section
+###################
+
+###################
+#Products
+###################
+products:
+ - title: Noche Romántica Hotel San José Plaza
+   action: /productos/noche-romantica-hotel-san-jose-plaza.html
+   img: /img/products/nocheromantica1.jpg
+   price: 230000
+   tags:
+ - title: Noche Romántica El Portal paraíso Natural
+   action: /productos/noche-romantica-el-portal.html
+   img: /img/products/nocheromantica3.jpg
+   price: 550000
+   tags:
+ - title: Cena Romántica Toscana
+   action: /productos/cena-romantica-toscana.html
+   img: /img/products/cena1.png
+   price: 119000
+   tags:
+ - title: SPA romance, relajación en pareja, María Magreth 
+   action: /productos/spa-romance.html
+   img: /img/products/spa1.png
+   price: 300000
+   tags:
+###################
+#Products
+###################
+experiencias1:
+    title: Reservar cenas personalizadas
+    description: "¿No encuentras el plan perfecto? Elige el día, el lugar, el tipo de decoración y más. <br><br> ¿Quieres fresas con chocolate? ¿champagne o vino? <br> Pídelo y lo arreglaremos por tí"
+    img: /img/type/dinner2.jpg
+    action: "regalos-unicos.html"
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	<!-- CSS  -->
+	{{>style}}
+	<style>	
+		.input-field label.active {
+
+		    -webkit-transform: translateY(-160%);
+		    transform: translateY(-160%);
+		}
+		.parallax-container {
+      height: 400px;
+    }
+	</style> 
+</head> 	
+<body>
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+
+	
+	<div class="blue-grey lighten-5">
+
+	<br>
+	<br>
+	<div class="container ">
+		<h1>{{front.title}}</h1>
+		{{>general/products-section  info=front.products}}
+	</div>
+	<div class="container">
+	<h1>Experiencias personalizadas</h1>
+		{{>general/horizontal-banner info=front.experiencias1}}
+	</div>
+	</div>
+
+	{{>footer}}
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

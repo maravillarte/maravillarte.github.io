@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	<!-- CSS  -->
+	{{>style}}
+	<style>	
+		.input-field label.active {
+
+		    -webkit-transform: translateY(-160%);
+		    transform: translateY(-160%);
+		}
+		.parallax-container {
+      height: 400px;
+    }
+	</style> 
+</head> 	
+<body class="blue-grey lighten-5">
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	<br>
+	<div class="container white z-depth-1" id="product-container">
+		{{>general/product-details  info=front.products}}
+	</div>
+
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

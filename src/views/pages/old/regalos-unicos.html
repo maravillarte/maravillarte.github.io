@@ -1,0 +1,159 @@
+---
+title: Consigue el regalo ideal
+parallax: img/photo/heart
+###################
+#main section
+###################
+main-img:
+    title: "Consigue el regalo ideal"
+    subtitle: "Asesoramos de manera gratuita a aquellas personas que no encuentran que regalar a aquella persona especial. Sólo ingresa los datos de contacto y nos encargaremos del resto"
+    img: /img/photo/heart
+    btn1:
+        label: Quiero el regalo perfecto
+        action: "#formulario"
+################### 
+#Navigation section
+###################
+###################
+#Products
+###################
+advantajes:
+    title: ¿Cómo Funciona?
+    descriptions:
+    - Resuelve el cuestionario 
+    - Te enviaremos las opciones que mejor se ajusten
+    - Escoge aquella que te guste más
+    images:
+    - /img/icons/1
+    - /img/icons/2
+    - /img/icons/3
+    
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	<!-- CSS  -->
+	{{>style}}
+	<style>	
+	.parallax-container {
+      height: 400px;
+    }
+	</style> 
+</head> 		
+<body>
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	{{>landing/hero-shot-two-btns info=front.main-img}}
+	
+	{{>landing/advantages3 info=front.advantajes}}
+
+
+	{{!formulario de inscripcion}}
+	<br>	
+	<div class="container" id="formulario">	
+			<h2 class="accent-text">Datos de la persona que recibe el detalle</h2>
+		<form action="https://formspree.io/fega.hg@gmail.com" method="POST">
+		<div class="row">	
+			<div class="input-field col s12 m6">	
+				<select name="genero" class="browser-default">
+					<option value="" disabled selected>Género</option>
+					<option value="M">Masculino</option>
+					<option value="F">Femenino</option>
+					<option value="O">Otro</option>
+				</select>
+			</div>
+			<div class="input-field col s12 m6">	
+				<select name="edad" class="browser-default">
+					<option value="" disabled selected>Edad</option>
+					<option value="15-18">15-18</option>
+					<option value="18-25">18-25</option>
+					<option value="25-35">25-35</option>
+					<option value="35-45">35-45</option>
+					<option value="3">+45</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="input-field col s12 m6">	
+				<select name="relacion" class="browser-default">
+					<option value="" disabled selected>Tipo de relación</option>
+					<option value="nov">Noviazgo</option>
+					<option value="amistad">Amistad</option>
+					<option value="matrimonio">Matrimonio</option>
+					<option value="Familia">Familiar</option>
+					<option value="conquista">Conquista</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12 m12">	
+					<input name="descripcion"  id="first_name" type="text" class="validate">
+          			<label for="first_name">Describe brevemente los gustos de esa persona, sus pasiones, aficciones, etc</label>
+			</div>
+		</div>
+		{{!PRESUPUESTO}}
+		<div class="row">
+			<h2 class="accent-text">Tu presupuesto</h2>
+			<div class="input-field col s12 m4">	
+					<input name="minimo"  id="first_name" type="text" class="validate">
+          			<label for="first_name">Mínimo</label>
+			</div>
+			<div class="input-field col s12 m4 center">	
+					<p class="center">Entre</p>
+			</div>
+			<div class="input-field col s12 m4">	
+					<input name="maximo"  id="first_name" type="text" class="validate">
+          			<label for="first_name">Máximo</label>
+			</div>
+		</div>
+		{{!tus datos}}
+		<div class="row">
+			<h2 class="accent-text">Tus datos de contacto</h2>
+			<div class="input-field col s12 m6">	
+					<input name=""  id="first_name" type="text" class="validate">
+          			<label for="first_name">Tu nombre</label>
+			</div>
+			<div class="input-field col s12 m6">	
+					<input  id="first_name" type="text" class="validate">
+          			<label for="first_name">Tu número celular</label>
+			</div>
+		</div>
+		<input type="hidden" name="_next" value="//giftu.github.io/gracias.html" />
+		{{!submit}}
+		<div class="row center">
+			<input class="btn-large center accent" type="submit" value="Enviar"></input>
+		</div>
+		</form>
+		<br>
+	</div>
+	
+		
+    
+	{{>footer}}
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+			$('.parallax').parallax();
+		});
+		$(document).on('click', 'a', function(event){
+			event.preventDefault();
+
+			$('html, body').animate({
+				scrollTop: $( $.attr(this, 'href') ).offset().top
+			}, 1000);
+		});
+	</script>
+	
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

@@ -1,0 +1,51 @@
+---
+title: Cena romántica Toscana
+
+###################
+#Products
+###################
+products:
+ title: Cena romántica Toscana
+ img: /img/screens/toscana.jpg
+ reservar: true
+ price: 119000
+ features:
+ - "En cualquiera de los restaurantes Toscana: el jardín y cc Cacique"
+ - "Incluye:"
+ - Flores
+ - Botella de vino o cocteles
+ - 2 platos a la carta (excepto langosta)
+ - 2 postres
+ - 2 bebidas
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	{{>style}}
+</head> 	
+<body class="blue-grey lighten-5">
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	<br>
+	
+	{{>general/product-details  info=front.products}}
+	
+
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

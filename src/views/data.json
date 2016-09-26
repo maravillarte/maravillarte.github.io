@@ -1,0 +1,41 @@
+{
+	"title": "Maravillarte",
+	"owner":"Maravillarte.co",
+	"description":"Marketplace de objetos mágicos",
+	"google-analytics":"UA-82859188-1",
+	"url":"http://maravillarte.co",
+	"logo-png":"/img/social-systems.png",
+	"logo-svg":"/img/social-systems.svg", 
+	"phone-country":"+57-316-770-1262",
+	"phone":"316-770-1262",
+
+	"version":"1",
+	"subversion":"0",
+	"build":"0",
+
+
+	"google-plus":"http://maravillarte.co",
+	"twitter":"http://maravillarte.co",
+	"linkedin":"http://maravillarte.co",
+	"share-img":"https://lh3.googleusercontent.com/ZXnlmAE6hClcN6KFWSfAq_-8FVRnC-rXZONba3G4HfspzB8bPf-UOkc_oeu2BWUyX5Td7fwOv-FpK1q9w1bZj1AYuQI5WSHYQNqHuZuDWCo9tE4Hj7fo5tiMrACPHVX9iiiGSYK8L-aeYhSZzqc__EROFxYy3JDw-PomWidwNquhWNj41jBkIA8ZCsBuGVyJqhC3Oblis8rbj-nUntn0AmuBxLzdEPlwG0sXxABju_B7TXqj9eGewHvahP0sGpLUQiGjDC2hvPMqFSM88cu7cXPjFG_XHLIW7bf-6IQ9Xs-7i4WUOur5aGBI8Kv8LEvgra-QQryD0P3et3WzHXA7UMGB2YGmmcVWXKX6ShJtvGUvVuS9bp0820Ib-FPdVepuVg2Yz9JboXa7JzHQjf5QIDvb_WULe2puC-DionAFyTZPIHlkKP-z01evqlFLTqyh4H-Pq1fbguVpeVCW32y9f-fn51q4ItHP9wvyis5h99uAWIO92M0b0oyxXSJrZroSiqQaYER0Xvgec3RfJ4zSK1OCI0nfs0fvkNKIwlDYSbG7HO4TrG9UPFO_a9EUxYxESSOYLM2OWJRSKIYPF56YeD2kozvW-G6Z8ZcVzZjNNR7ysTEM_w=w480-h251-no",
+	"share-title":"maravillarte.co",
+	"share-description":"Marketplace de objetos mágicos",
+
+
+	"theme":"#ffb74d",
+
+	"primary"	   	:"#ffffff",
+	"primary-light"	:"#ffffff",
+	"primary-dark" 	:"#ffffff",
+	"primary-text" 	:"#000000",
+
+	"accent"		:"#ff7043  ", 
+	"accent-dark"	:"#f4511e",
+	"accent-text"	:"#f4511e",
+	"accent-light"	:"#fbe9e7",
+
+	"footer-color"	:"#ff7043 ",
+	"nav-color"		:"#ff7043 " 
+	
+
+}

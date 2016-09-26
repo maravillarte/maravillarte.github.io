@@ -1,0 +1,46 @@
+---
+title: Oso de peluche gigante 
+
+###################
+#Products
+###################
+products:
+ title: Oso de peluche gigante 
+ img: /img/screens/oso2.jpg
+ price: 230000
+ features:
+ - "Elige el color que más te guste: blanco, naranja, rosa, cafe"
+ - 140cm de alto
+ - Incluye costo de envío
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	{{>style}}
+</head> 	
+<body class="blue-grey lighten-5">
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	<br>
+	
+	{{>general/product-details  info=front.products}}
+	
+
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

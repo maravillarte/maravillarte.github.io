@@ -1,0 +1,166 @@
+---
+title: Consigue el regalo ideal
+parallax: img/photo/dinner
+###################
+#main section
+###################
+main-img:
+    title: "Organiza tu cena ideal"
+    subtitle: "Crea la cena ideal a tu gusto. Elige un día, un lugar, un tipo de decoración y los extras; nos encargaremos del resto"
+    img: /img/photo/dinner
+    btn1:
+        label: Organizar mi cena ya!
+        action: "#formulario"
+###################
+#Products
+###################
+advantajes:
+    title: ¿Cómo Funciona?
+    descriptions:
+    - Elige según tus gustos
+    - Confirma la reserva
+    - Nos encargaremos del resto
+    images:
+    - /img/icons/1
+    - /img/icons/2
+    - /img/icons/3
+###################
+#image-picker1
+###################
+restaurante:
+    label: restaurante
+    name: entry.729880607
+    img:
+     - url: https://media-cdn.tripadvisor.com/media/photo-f/03/4a/89/93/toscana.jpg
+       value: Toscana el Jardín
+     - url:   https://media-cdn.tripadvisor.com/media/photo-o/08/6c/b5/44/nuestras-instalaciones.jpg
+       value: Ristorante Isola Di Sardegna
+     - url: https://media-cdn.tripadvisor.com/media/photo-s/07/55/42/5e/tavolo-gourmet.jpg
+       value: Tavolo Gourmet
+     - url: https://media-cdn.tripadvisor.com/media/photo-s/03/24/72/2a/nuova-bella-napoli.jpg
+       value: Nuova Bella Napoli
+decoracion:
+    label: Decoracion
+    name: entry.1437259605
+    img:
+     - url: http://static.imujer.com/sites/default/files/styles/primera/public/otramedicina/1/126485222.jpg
+       value: Rosas Rojas
+     - url: http://www.beevoz.com/wp-content/uploads/2015/11/fondo-de-escritorio-con-petalos-de-rosa.jpg
+       value: Rosas rojas y blancas
+     - url: http://www.elrincondesonia.com/wp-content/uploads/2011/02/imagen-82.jpg
+       value: Velas y rosas
+     - url: http://arteydecoracion.net/wp-content/uploads/2014/11/Decoracion-Dorada-para-Navidad2.jpg
+       value: Cena dorada
+acompanamiento:
+    label: Acompañamiento
+    name: entry.69359123
+    img:
+     - url: https://image.freepik.com/free-icon/empty-set-mathematical-symbol_318-59301.png
+       value: Ninguno
+     - url: http://infalink.com/images/apps-iphone-para-vinos.jpg
+       value: Vino tinto
+     - url: https://cdn.davidwolfe.com/wp-content/uploads/2015/12/champagne.jpg
+       value: Champagne
+     - url: http://www.ohpostres.com/images/recetas-brownies-de-corazon-.jpg
+       value: Brownie para dos
+###################
+#inputs
+###################
+input-name:
+ name: entry.2070193012
+ label: Quién reserva
+ class: m6 l6
+input-tel:
+ name: entry.2066869922
+ label: Celular de contacto
+ class: m6 l6
+input-date:
+ name: entry.2099616078
+ label: Fecha y hora
+ class: m6 l6
+input-extra:
+ name: entry.1840048888
+ label: Peticiones especiales
+ class: m6 l6
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	<!-- CSS  -->
+	{{>style}}
+	<style>	
+		.parallax-container {
+			height: 400px;
+		}
+	</style>
+	<link rel="stylesheet" href="/css/image-picker.css">
+</head> 		
+<body>
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	{{>landing/hero-shot-two-btns info=front.main-img}}
+	
+	{{>landing/advantages3 info=front.advantajes}}
+	
+
+	{{!formulario de inscripcion}}
+	<br>	
+	<div class="container" id="formulario">	
+		<form action="https://docs.google.com/forms/d/e/1FAIpQLScRk2RMOqqxf4qjCOfMzVo9lou_XEoXMgowTHnj0mlN3SweGA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+			<h2 class="accent-text" style="font-size:1.5em;">Elegir el lugar</h2>
+			{{>general/image-picker info=front.restaurante}}
+			<h2 class="accent-text" style="font-size:1.5em;">Elegir la decoración</h2>
+			{{>general/image-picker info=front.decoracion}}
+			<h2 class="accent-text" style="font-size:1.5em;">Elegir el acompañamiento</h2>
+			{{>general/image-picker info=front.acompanamiento}}
+			<h2 class="accent-text" style="font-size:1.5em;">Últimos detalles</h2>
+			<div class="row">
+				{{>general/input info=front.input-name}}
+				{{>general/input info=front.input-tel}}
+				{{>general/input info=front.input-date}}
+				{{>general/input info=front.input-extra}}	
+			</div>
+			<div class="row center">
+				<input type="submit" name="submit" value="Enviar"class="btn-large accent">
+			</div>
+			<br>
+			<br>
+		</form>
+	</div>
+	<script type="text/javascript">var submitted=false;</script>
+	<iframe name="hidden_iframe" id="hidden_iframe"
+	style="display:none;" onload="if(submitted)
+	{window.location='/gracias.html';}"></iframe>
+
+
+	{{>footer}}
+	<script src="/js/min.js"></script>
+	<script src="/js/image-picker.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+			$('.parallax').parallax();
+			$("select").imagepicker({hide_select : false,})
+		});
+		$(document).on('click', 'a', function(event){
+			event.preventDefault();
+
+			$('html, body').animate({
+				scrollTop: $( $.attr(this, 'href') ).offset().top
+			}, 1000);
+		});
+
+	</script>
+	
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

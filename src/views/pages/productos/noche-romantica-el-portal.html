@@ -1,0 +1,49 @@
+---
+title: Noche Romántica El Portal paraíso Natural
+
+###################
+#Products
+###################
+products:
+ title: Noche Romántica El Portal paraíso Natural
+ img: /img/screens/romantico2.jpg
+ price: 550000
+ features:
+ - Coctel de bienvenida
+ - "La habitación incluye: lencería de lujo, pétalos de rosas, botella de vino, velas, bombones de chocolate y canasta de frutas"
+ - Incluye Spa Chocolate 3 horas
+ - Cena romántica decorada
+ - Desayuno en restaurante
+ reservar: true
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	{{>style}}
+</head> 	
+<body class="blue-grey lighten-5">
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	<br>
+	
+	{{>general/product-details  info=front.products}}
+	
+
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

@@ -1,0 +1,125 @@
+---
+title: Consigue el regalo ideal
+parallax: img/photo/heart
+###################
+#main section
+###################
+main-img:
+    title: "Consigue el regalo ideal"
+    subtitle: "Encuentra las mejores y más originales ideas para esa persona especial, aquí."
+    img: /img/photo/heart
+################### 
+#Navigation section
+###################
+###################
+#Products
+###################
+products:
+ - title: Regalos clásicos
+   description: Chocolates, rosas, peluches y mucho más
+   action: /regalos-clasicos.html
+   img: /img/type/rose.jpg
+ - title: Regala Experiencias
+   description: Regala un día de spa, una cena romántica o un viaje cargado de aventura
+   action: /regalar-experiencias.html
+   img: /img/type/dinner.jpg
+ - title: Regalos Originales
+   description: Descubre detalles exclusivos, creativos y personalizables 
+   action: /regalos-originales.html
+   img: /img/type/boat.png
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	<!-- CSS  -->
+	{{>style}}
+	<style>
+		.parallax-container {
+      height: 400px;
+    }
+	</style> 
+</head> 		
+<body>
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	{{>landing/hero-shot-two-btns info=front.main-img}}
+	{{!seccion de categorias}}
+	<div class="blue-grey lighten-5">
+	<br>
+		<div class="container ">
+		<h1>Selecciona el tipo de regalo que te gustaría dar:</h1>
+			<div class="row no-mar">
+				{{#each front.products}}
+				<div class="col s12 l4 m6 ">
+					<a href="{{this.action}}">
+					    <div  class="card">
+							<div class="card-image">
+								<img  src="{{this.img}}">
+								<span class="card-title dark">{{this.title}}</span>
+							</div>
+							<div class="card-content black-text">
+								<p>{{this.description}}</p>
+							</div>
+							<div class="card-action">
+								<a onclick="ga( 'send', 'event','entrar-seccion','pagina-principal','{{this.title}}')" href="{{this.action}}">ver más</a>
+							</div>
+						</div>
+					</a>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+		<br>
+		<br>
+	</div>
+	{{!--seccion se productos destacados}}
+	<div>
+		<div class="container ">
+		<h1>Productos destacados:</h1>
+			<div class="row no-mar">
+				{{#each front.destacados}}
+				<div class="col s12 l4 m6 ">
+					<a href="{{this.action}}">
+					    <div  class="card">
+							<div class="card-image">
+								<img  src="{{this.img}}">
+								<span class="card-title dark">{{this.title}}</span>
+							</div>
+							<div class="card-content black-text">
+								<p>{{this.description}}</p>
+							</div>
+							<div class="card-action">
+								<a href="{{this.action}}">ver más</a>
+							</div>
+						</div>
+					</a>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+		<br>
+		<br>
+	</div>
+--}}
+	{{>footer}}
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+			$('.parallax').parallax();
+	    });
+		
+	</script>
+	
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

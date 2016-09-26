@@ -1,0 +1,55 @@
+---
+title: Romance Spa María Magreth
+
+###################
+#Products
+###################
+products:
+ title: Romance Spa María Magreth
+ img: /img/screens/spa.jpg
+ price: 300000
+ reservar: true
+ features:
+ - Masaje craneofacial
+ - Masaje con el elixir de las uvas para dos
+ - Spa sonoro
+ - Magnetoterapia
+ - Masaje con Pindas
+ - Piedras tibias semipreciosas faciales
+ - Mascarilla facial hidratante de vino o frutas
+ - Mascarilla corporal de vino o frutas
+ - Deliciosa torta de naranja y copa de champaña en el jacuzzi con espuma
+ - Cena toscana 
+ - Decoración con velas y flores
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	{{>style}}
+</head> 	
+<body class="blue-grey lighten-5">
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+	<br>
+	
+	{{>general/product-details  info=front.products}}
+	
+
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>

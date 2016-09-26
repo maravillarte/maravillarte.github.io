@@ -1,0 +1,409 @@
+<div id="btn-carrito" class="fixed-action-btn" >
+  <a class="btn-floating btn-large accent modal-trigger" href="#modal-carrito">
+    <i class="large material-icons">shopping_cart</i>
+  </a>
+</div>
+{{!CARRITO DE COMPRAS!!!!}}
+<div id="modal-carrito" class="modal modal-fixed-footer modal-comprar-2">
+  <div class="container container-90">
+  	<div class="row">
+  		<div class="col s12 m6 l6">
+        <br>
+        <br>
+        <h1>Tu pedido</h1>
+        <div id="pedido">
+         <div class="row"><div class="col s12 center"><p>No tiene productos actualmente</p></div></div>
+
+       </div>
+       <div class="row">
+         <div class="col s6">
+           <p class="no-mar" style="padding-right: 10px;">Compra</p>
+         </div>
+         <div class="col s6">
+           <h1 id="amount-subtotal" class="right-align no-mar" style="padding-right: 10px;">$ 35000</h1>
+         </div> 
+       </div>
+
+       <div class="row">
+         <div class="col s6">
+           <p class="no-mar" style="padding-right: 10px;">Envio</p>
+         </div>
+         <div class="col s6">
+           <h1 id="amount-shipping" class="right-align no-mar" style="padding-right: 10px;">$ 35000</h1>
+         </div> 
+       </div>
+       <div class="divider"></div>
+       <div class="row">
+         <div class="col s6">
+           <p class="no-mar" style="padding-right: 10px;">Total</p>
+         </div>
+         <div class="col s6">
+           <h1 id="amount-total" class="right-align no-mar" style="padding-right: 10px;">$ 35000</h1>
+         </div> 
+       </div>
+     </div>
+     <div id="datos-de-envio" class="col s12 m6 l6">
+      <br>
+      <br>
+      <h1>Tus datos</h1>
+      <p>Realizamos envíos a Bucaramanga (valor $5.000) y  a nivel nacional (valor $10.000), si tienes dudas puedes escribirnos a nuestro Whatsapp: 3167701262</p>
+      <p>Métodos de pago:</p>
+      <div class="row no-mar">
+        <div class="col s12 m12 l2 ">
+          <input class="with-gap" name="payment-method" type="radio" id="payment-method1" value="manual" required/>
+          <label for="payment-method1">Manual:</label>
+        </div>
+        <div class="col s3 m3 l2 ">
+          <img class="responsive-img"  src="http://bb6e4750a9fd4af12e39-0b5832f7432214ede1c05fe6bed4dbf9.r61.cf2.rackcdn.com/sites/default/files/logo-via-baloto-con-indicativo_0_0.png" alt="">
+        </div>
+        <div class="col s3 m3 l2 ">
+          <img  class="responsive-img" src="http://www.payulatam.com/colombia/sites/colombia/files/comercios/efecty/efecty.png" alt="">
+        </div>
+        <div class="col s3 m3 l2 ">
+          <img  class="responsive-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Logo_Bancolombia2.png/245px-Logo_Bancolombia2.png" alt="">
+        </div>
+        <div class="col s3 m3 l2 ">
+          <img  class="responsive-img" src="http://www.exelmedical.com/wp-content/uploads/2015/10/contraentrega.jpg" alt="">
+        </div>
+      </div>
+      <div class="row no-mar">
+        <div class="col s12 m12 l2 ">
+          <input class="with-gap" name="payment-method" type="radio" id="payment-method2" value="virtual"/>
+          <label for="payment-method2">Virtual:</label>
+        </div>
+        <div class="col s12 m12 l8 ">
+          <img class="responsive-img"  src="http://www.payulatam.com/logos/img/Colombia(2).png" alt="">
+        </div>
+      </div>
+
+
+      <form id="carrito-de-compra" action="https://docs.google.com/forms/d/e/1FAIpQLSc6rT7VhxrRAejwtdlm6rv_hWWnQ5-1kPZ_LdvUZKrzbGNctw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+        <div class="row">
+
+          {{>forms/input r="t" class="l6" name="entry.1386171733" id="shippingAddress" ac="address" label="Dirección de entrega" }}{{!direccion}}
+          {{>forms/input r="t" class="l6" name="entry.1386171733" id="shippingCity"    ac="city" label="Ciudad" }}{{!Ciudad}}
+          {{>forms/input r="t" class="  " name="entry.318204112"  id="buyerFullName"   ac="name" label="A nombre de"  ph="Nombre Completo"}}{{!destinatario}}
+          {{>forms/input r="t" class="l6" name="entry.2018040469" id="buyerEmail"      ac="email" label="Correo electronico"}}{{!celular y correo}}
+          {{>forms/input r="t" class="l6" name="entry.2018040469" id="telephone"       ac="mobile" label="Telefono/celular"}}
+          {{>forms/input r="t" class="  " name="entry.1828123166" id="description"     ac="" label="Descripción" ph="Escribe aquí, si deseas alguna característica especial en tu pedido" }}{{!descripcion}}
+
+          <input class="hide" id="amount" name="entry.643377432" type="text" value="">
+          <input class="hide" id="product" name="entry.373077336" type="text" value="">
+        {{!<div class="input-field col s12">
+          <textarea  name="entry.1828123166" id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">Detalles del pedido</label>
+        </div>}}
+        {{!-----------------}}
+        {{!INTEGRACION PAY U}}
+        {{!-----------------}}
+        {{!mi informacion}}
+        <input name="merchantId"    type="hidden"  value="{{info.merchantID}}"   >
+        <input name="accountId"     type="hidden"  value="{{info.accountID}}" >
+        <input name="signature"     type="hidden"  value=""  id="signature-payU">
+        <input name="responseUrl"   type="hidden"  value="http://maravillarte.co/gracias" >
+        <input name="confirmationUrl" type="hidden" value="http://maravillarte.co/gracias" >
+        <input name="lng"           type="hidden"  value="es" >
+        {{!informacion del pedido}}
+        <input name="description"   type="hidden"  value=""    id="description-payU">
+        <input name="extra1"        type="hidden"  value=""    id="extra1-payU">
+        <input name="referenceCode" type="hidden"  value=""    id="referenceCode-payU">
+        <input name="amount"        type="hidden"  value="3"   id="amount-payU">
+        <input name="tax"           type="hidden"  value="0"   id="tax-payU">
+        <input name="taxReturnBase" type="hidden"  value="0"   id="taxReturnBase-payU">
+        <input name="currency"      type="hidden"  value="COP" id="currency-payU">
+        {{!informacion del comprador}}
+        <input name="buyerFullName" type="hidden"    value=""  id="buyerFullName-payU">
+        <input name="buyerEmail"    type="hidden"    value=""  id="buyerEmail-payU">
+        <input name="shippingAddress" type="hidden"  value=""  id="shippingAddress-payU">
+        <input name="shippingCity"  type="hidden"    value=""  id="shippingCity-payU">
+        <input name="shippingCountry" type="hidden"  value="CO" id="shippingCountry-payU">
+        <input name="telephone"     type="hidden"    value=""  id="telephone-payU">
+        {{!-----------------}}
+        {{!INTEGRACION PAY U}}
+        {{!-----------------}}   
+
+      </div>	
+      {{!Boton de envio}}
+      <div class="row center">
+        <input onclick="ga( 'send', 'event','comprar','confirmando','{{this.title}}')" type="submit" name="submit" value="Comprar"class="btn-large accent">
+      </div>
+    </form>
+  </div>
+ </div>
+</div>
+{{!BOTON DE SALIR}}
+{{!boton de salir}}
+<div class="fixed-action-btn" style="top: 10px; right: 10px; bottom: initial;">
+ <a class="btn-floating btn-large accent" onclick="$('#modal-carrito').closeModal();">
+  <i class="large material-icons">cancel</i>
+</a>
+</div>
+</div>
+{{!JAVASCRIPT PARA EL ENVIO DE FORMULARIO}}
+<script type="text/javascript">var submitted=false;</script>
+<iframe name="hidden_iframe" id="hidden_iframe"
+style="display:none;" onload="if(submitted)
+{window.location='/gracias.html';}"></iframe>
+{{!JAVASCRIPT PARA LAS DEMAS FUNCIONES DEL FORMULARIO}}
+<script>
+//VARIABLE DONDE SE GUARDAN LAS COMPRAS 
+var compras=[];
+//// Upgrade for JSON.stringify, updated to allow arrays
+(function(){
+    // Convert array to object
+    var convArrToObj = function(array){
+      var thisEleObj = new Object();
+      if(typeof array == "object"){
+        for(var i in array){
+          var thisEle = convArrToObj(array[i]);
+          thisEleObj[i] = thisEle;
+        }
+      }else {
+        thisEleObj = array;
+      }
+      return thisEleObj;
+    };
+    var oldJSONStringify = JSON.stringify;
+    JSON.stringify = function(input){
+      if(oldJSONStringify(input) == '[]')
+        return oldJSONStringify(convArrToObj(input));
+      else
+        return oldJSONStringify(input);
+    };
+  })();
+/*
+* Codigo para cuando hago click en comprar
+* añade la compra a la variable ____ y luego pide generar el cuadrito
+* tambien guarda la variable en una cookie
+*/
+function update(){
+ inputUpdate();
+ generateCart();
+ saveCookie();
+ amountGenerator();
+ descriptionGenerator();
+ md5Generator();
+}
+function buyClick(price,title,image,time, creative){
+  if(checkifInCart(title)){
+   Materialize.toast("Este artículo ya esta en tú carrito", 5000)
+ }else{
+   var producto={title: title,
+    price: price,
+    image: image,
+    time: time,
+    creative:creative,
+    q: 1
+  }
+   compras.push(producto)
+   Materialize.toast("Producto añadido", 5000)
+ }
+ update()
+}
+/*
+* CHECK IF CART have an specific kind of product
+*/
+function checkifInCart(title){
+     for(var i=0; i<compras.length; i++){if (compras[i].title == title){return true;}
+      return false;
+    }
+  }
+/*
+* GENERATE CART
+*/
+function generateCart(){
+  var carritoHTML='';
+  if (compras.length>0){
+  for(var i=0; i<compras.length; i++){
+  carritoHTML+='<div class="row objeto-pedido z-depth-1 accent-light valign-wrapper left-align"><div class="col s6 m4 l2 mini-thumbnail"><img src="'+ compras[i].image +'" class="responsive-img" alt=""></div><div class="col s6 m4 l2 unidades-pedidas"><input id="producto-'+i+'" min="0" max="100" type="number" value="'+compras[i].q+'" class="center" onchange="inputProductQuantityChange(\''+compras[i].title+'\',\'producto-'+i+'\')"></div><div class="col s12 m4 l9 precio-pedido hide-on-small-only"><h2 class="accent-text truncate">'+compras[i].title+'</h2><p>'+compras[i].price+'</p></div> <i class="material-icons cancel-icon" data-name="'+compras[i].title+'">cancel</i></div>'
+  }
+  carritoHTML+='<div class="row no-mar"><div class="col s12 center"><a href="#datos-de-envio" class="btn white-text accent hide-on-med-and-up">datos de envio</a></div></div>';
+  }else{
+  carritoHTML+='<div class="row"><div class="col s12 center"><p>No tiene productos actualmente</p></div></div>';
+  }
+  $("#pedido").html(carritoHTML);
+
+  saveCookie();
+  $(".cancel-icon").click(function(){ 
+  deleteProduct($(this).data('name'))
+  descriptionGenerator();
+  //console.log("amountGenerator   gluglgigsdfgsd")
+  amountGenerator();
+  inputUpdate();
+  generateCart();
+  saveCookie();
+  md5Generator();
+  });
+}
+/*
+* actualizar input del pedido
+*/
+function inputUpdate(){
+  console.log("actualizando campo maestro")
+  $("#product").val(JSON.stringify(compras));
+}
+/*
+* actualizar input del pedido
+*/
+function saveCookie(){
+ document.cookie = "cart="+JSON.stringify(compras);
+}
+/*
+* FUNCION GETCOOKIE
+* Obtiene una cookie del navegador, si esta vacia, es null
+*/
+function getCookie(name) {
+  var dc = document.cookie;
+  var prefix = name + "=";
+  var begin = dc.indexOf("; " + prefix);
+  if (begin == -1) {
+  begin = dc.indexOf(prefix);
+  if (begin != 0) return null;
+  }
+  else
+  {
+  begin += 2;
+  var end = document.cookie.indexOf(";", begin);
+  if (end == -1) {
+  end = dc.length;
+  }
+  }
+  // because unescape has been deprecated, replaced with decodeURI
+  return unescape(dc.substring(begin + prefix.length, end));
+  //return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+/*
+* DeleteProduct
+* Elimina un elemento de la carta
+*/
+function deleteProduct(title){
+  setTimeout(function(){
+  var index;
+  for(var i=0; i<compras.length; i++){
+  if (compras[i].title == title){index=i}
+  }
+  compras.splice(index,1);
+  update();
+  }, 300)
+}
+
+//update FORM 
+$('#payment-method1,#payment-method2').change(function (){
+  //console.log("cambiando destinatario")
+  if ($('input[name=payment-method]:checked').val()=="manual"){
+    $("#carrito-de-compra").attr("action","https://docs.google.com/forms/d/e/1FAIpQLSc6rT7VhxrRAejwtdlm6rv_hWWnQ5-1kPZ_LdvUZKrzbGNctw/formResponse")
+    $("#carrito-de-compra").attr("target","hidden_iframe")
+  }else{
+    $("#carrito-de-compra").attr("action","https://gateway.payulatam.com/ppp-web-gateway/")
+    $("#carrito-de-compra").attr("target","")
+  }
+})
+//payU input updates
+$('#shippingCity,#shippingAddress, #buyerFullName, #buyerEmail, #telephone, #description').change(function(){
+  $('#shippingCity-payU').val($('#shippingCity').val());
+  $('#shippingAddress-payU').val($('#shippingAddress').val());
+  $('#buyerFullName-payU').val($('#buyerFullName').val());
+  $('#buyerEmail-payU').val($('#buyerEmail').val());
+  $('#telephone-payU').val($('#telephone').val());
+  $('#description-payU').val($('#description').val());
+  amountGenerator();
+  descriptionGenerator();
+  md5Generator();
+})
+//Generates the amount to pay
+function amountGenerator(){
+  var result={};
+  var subtotal =0;
+  var total =0;
+  var shipping =0;
+  var vendedores=[];
+
+  var shippingCity=$("#shippingCity").val();
+
+  for(var i=0; i<compras.length ; i++){
+    subtotal+=compras[i].price*compras[i].q
+    console.log(compras[i].q)
+
+    if ($.inArray(compras[i].creative , vendedores) === -1){
+      if (shippingCity === "Bucaramanga" || shippingCity === "B/manga" || shippingCity === "bucaramanga" || shippingCity === "b/manga" || shippingCity === "Bucaramanga" || shippingCity === "Floridablanca"  || shippingCity === "Floridablanca" || shippingCity === "f/blanca" || shippingCity === "Bucaramanga"){
+        shipping+=5000;
+      }else {
+        shipping+=10000;
+      }
+      vendedores.push(compras[i].creative);
+    }
+  }
+  //console.log(vendedores)
+  total=subtotal+shipping;
+  $("#amount-total").html("$" + total);
+  $("#amount-subtotal").html("$" + subtotal);
+  $("#amount-shipping").html("$" + shipping);
+  $("#amount-payU").val(total);
+  $("#amount").val(total);
+  result={
+    total: total,
+    subtotal:subtotal,
+    shipping:shipping,
+  }
+}
+//
+function descriptionGenerator(){
+  var result="Compra de:";
+  for(var i=0; i<compras.length ; i++){
+    result+= compras[i].title;
+    result+=","
+  }
+  result+="Comentarios: "
+  result+=$("#description").val();
+  $("#description-payU").val(result);
+  //console.log("descripcion:"+result)
+}
+function codeGenerator(){
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
+  for( var i=0; i < 7; i++ )
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  return text;
+}
+function md5Generator(){
+  var input="~{{info.merchantID}}~"+$("#referenceCode-payU").val()+"~"+$("#amount").val()+"~COP"
+  var hash = md5(input);
+  $("#signature-payU").val(hash)
+
+  return hash
+}
+function inputProductQuantityChange(title,id){
+  for(var i=0; i<compras.length; i++){
+  if (compras[i].title == title){
+    compras[i].q=$('#'+id).val();
+   update();
+  }
+ }
+}
+function inputProductQuantityBind(){
+}
+
+$(document).ready(function(){
+  compras=[]
+  if (getCookie("cart")==null || getCookie("cart")==undefined || getCookie("cart")=="{}"){
+    compras=[]
+  }else{
+    //console.log("this")
+    compras = eval(getCookie("cart"));
+    generateCart();
+    inputUpdate();
+  }
+  amountGenerator();
+  descriptionGenerator();
+  $("#referenceCode-payU").val(codeGenerator());
+  $(".cancel-icon").click(function(){ 
+    deleteProduct($(this).data('name'))
+    descriptionGenerator();
+    amountGenerator();
+    inputUpdate();
+    generateCart();
+    saveCookie();
+    md5Generator();
+  });
+})
+</script>

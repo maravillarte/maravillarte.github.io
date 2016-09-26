@@ -1,0 +1,88 @@
+---
+title: Regalos únicos y originales
+################### 
+#Navigation section
+###################
+
+###################
+#Products
+###################
+products:
+ - title: Varitas personalizadas, Harry potter
+   action: /productos/varitas-magicas-harry-potter.html
+   img: /img/products/baritas1.png
+   price: 30000
+   tags:
+ - title: Joyería Origami Personalizable
+   action: /productos/joyeria-origami.html
+   img: /img/products/cat.jpg
+   price: 38000
+   tags:
+ - title: Collares barco de papel
+   action: /productos/collares-origami-barco-de-papel.html
+   img: /img/products/boat.jpg
+   price: 35000
+   tags:
+
+experiencias1:
+    title: Te ayudamos a encontrar el regalo perfecto
+    description: "Te podemos ayudar a encontrar el regalo perfecto para aquella persona, sin costo adicional. ¿te interesa? solo has click en 'ver más' "
+    img: /img/type/perfect.jpg
+    action: "regalos-unicos.html"
+---
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{data.title}} | {{front.title}}</title>
+	<meta name="description" content="{{data.description}}">
+	{{>head}}
+	<!-- CSS  -->
+	{{>style}}
+	<style>	
+		.input-field label.active {
+
+		    -webkit-transform: translateY(-160%);
+		    transform: translateY(-160%);
+		}
+		.parallax-container {
+      height: 400px;
+    }
+	</style>
+</head> 	
+<body>
+	{{>analytics}}
+	{{>general/nav info=front.nav}}
+
+	
+	<div class="blue-grey lighten-5">
+
+	<br>
+	<br>
+	<div class="container ">
+		<h1>{{front.title}}</h1>
+		{{>general/products-section  info=front.products}}
+	</div>
+	<br>
+	<div class="container">
+	<h1>¿No encuentras el regalo que buscas?</h1>
+		{{>general/horizontal-banner info=front.experiencias1}}
+	</div>
+	<br>
+	</div>
+	{{>footer}}
+	<script src="/js/min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".button-collapse").sideNav();
+			$('.modal-trigger').leanModal();
+			$('select').material_select();
+			$("#nav-mobile").removeClass("hidden");
+	    });
+	</script>
+	
+	{{>microdatos}}
+	{{>landing/registry-form}}
+</body>
+</html>
